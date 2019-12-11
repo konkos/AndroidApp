@@ -2,6 +2,11 @@ package com.uom.androidapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.accounts.AccountManager;
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
+import android.accounts.AuthenticatorException;
+import android.accounts.OperationCanceledException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -25,22 +30,34 @@ public class MainActivity extends AppCompatActivity {
     //Check for apis
     //https://developer.mastercard.com/apis
 
+    /*
+    If the application you want to implement is not a web application, and you cannot provide a redirect url to be called,
+     there is a technical solution to get the intermediate code.  In a desktop application, a web control must be used to initiate the authorization proccess,
+     and a dummy redirect url.  When the user provides his/her credentials and authorizes your application for access, this control will try to redirect to the dummy redirect url,
+     which will contain the code as a parameter.  This is the parameter you need to capture, in order to use it for the token call (second step).
+
+
+    https://www.oauth.com/oauth2-servers/redirect-uris/
+    https://www.oauth.com/oauth2-servers/redirect-uris/redirect-uri-registration/
+    https://www.oauth.com/oauth2-servers/redirect-uris/redirect-uris-native-apps/
+    https://www.oauth.com/oauth2-servers/redirect-uris/redirect-uri-validation/
+    https://www.oauth.com/
+
+
+     *
+     * */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String url_string = "https://api.rapidlink.piraeusbank.gr/piraeusbank/production/v2.1/oauth/oauth2/authorize";
-        /*new DownloadData().execute(url_string);*/
-
-        //new API_CALL().execute(url);
-
 //        /*opens The url provided in a new Browser*/
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url_string));
-           startActivity(browserIntent);
+//        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=-oDNDnLuIpw"));
+//        startActivity(browserIntent);
     }
 
-    private class DownloadData extends AsyncTask<String, Void, String> {
+ /*   private class DownloadData extends AsyncTask<String, Void, String> {
         private static final String TAG = "TeoDownloadDataTask";
 
         @Override
@@ -86,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             return sb.toString();
-        }
-    }
+        }*/
 
 }

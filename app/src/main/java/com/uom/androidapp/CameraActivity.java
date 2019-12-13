@@ -6,11 +6,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity {
+public class CameraActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private ImageView imageView;
@@ -19,25 +17,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_camera);
+    }
 
-        Button btn = (Button) findViewById(R.id.cameraBtn);
-        imageView = (ImageView) findViewById(R.id.imageView);
-
-       /* btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dispatchTakePictureIntent();
-            }
-        });*/
-
-       btn.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent = new Intent();
-               intent.getSerializableExtra("");
-           }
-       });
+    @Override
+    protected void onStart() {
+        super.onStart();
+        dispatchTakePictureIntent();
     }
 
     private void dispatchTakePictureIntent() {
@@ -56,5 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
             imageView.setImageBitmap(imageBitmap);
         }
+    }
+
+    public ImageView getImageView() {
+        return imageView;
     }
 }

@@ -8,10 +8,14 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.ImageView;
 
+import java.io.Serializable;
+
 public class CameraActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private ImageView imageView;
+    private Bitmap imageBitmap;
+    private Intent intent;
 
 
     @Override
@@ -20,11 +24,14 @@ public class CameraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        dispatchTakePictureIntent();
-    }
+
+
+//    @Override
+//    protected void onStop() {
+//        imageView.setImageBitmap(imageBitmap);
+//        getIntent().putExtra("imageView",(Serializable) imageView);
+//        super.onStop();
+//    }
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -38,12 +45,13 @@ public class CameraActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-
-            imageView.setImageBitmap(imageBitmap);
+            imageBitmap = (Bitmap) extras.get("data");
         }
     }
 
+
+    //Return Bitmap imageBitmap = (Bitmap) extras.get("data"); instead of Imageview;
+    //Set Bitmap to MainActivity.ImageView
     public ImageView getImageView() {
         return imageView;
     }

@@ -12,6 +12,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,8 +22,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,9 +60,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        final Authorisation authorisation =  new Authorisation();
+
+        Button btn = findViewById(R.id.button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Authorisation().execute();
+            }
+        });
+
+//        new AccessToken().execute();
+
+//        new Sandbox().execute();
 //        new API_CALL().execute("");
 
-       new Api_Call2().execute();
+       //new Api_Call2().execute();
+
+       /* OkHttpExample2 obj = new OkHttpExample2();
+        try {
+            obj.sendGET();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
 
 
 //        /*opens The url provided in a new Browser*/

@@ -1,5 +1,7 @@
 package com.uom.androidapp;
 
+import android.util.Log;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -15,17 +17,13 @@ public class OkHttpExample2 {
     // only one client
     private final OkHttpClient httpClient = new OkHttpClient();
 
-    public static void main(String[] args) throws IOException {
-        OkHttpExample2 obj = new OkHttpExample2();
-        obj.sendGET();
-    }
-
-    private void sendGET() throws IOException {
+    public void sendGET() throws IOException {
 
         Request request = new Request.Builder()
-                .url("https://httpbin.org/get")
-                .addHeader("custom-key", "mkyong")  // add request headers
-                .addHeader("User-Agent", "OkHttp Bot")
+                .url("https://developer.nbg.gr/identity/connect/authorize")
+                .addHeader("client_id", "6708C63F-8DC9-47BF-B307-26D52EE88B59")  // add request headers
+                .addHeader("response_type", "query")
+                .addHeader("scope", "openid profile role sandbox-account-info-api-v2")
                 .build();
 
         httpClient.newCall(request).enqueue(new Callback() {
@@ -50,5 +48,6 @@ public class OkHttpExample2 {
                 }
             }
         });
+
     }
 }

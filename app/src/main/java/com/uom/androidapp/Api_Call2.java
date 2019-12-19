@@ -12,6 +12,7 @@ import okhttp3.Response;
 public class Api_Call2 extends AsyncTask<Void, Void, Void > {
 
     private static final String KEY = "6708C63F-8DC9-47BF-B307-26D52EE88B59";
+    //https://my.nbg.gr/identity/connect/authorize?client_id=6708C63F-8DC9-47BF-B307-26D52EE88B59&response_type=query&scope=sandbox-account-info-api-v2
 
     @Override
     protected Void doInBackground(Void... voids) {
@@ -19,7 +20,7 @@ public class Api_Call2 extends AsyncTask<Void, Void, Void > {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("https://my.nbg.gr/identity/connect/authorize?client_id="+KEY+"&response_type=code&scope=sandbox-account-info-api-v2&redirect_uri=https://developer.nbg.gr/oauth2/redoc-callback")
+                .url("https://my.nbg.gr/identity/connect/authorize?client_id="+KEY+"&response_type=query&scope=sandbox-account-info-api-v2")
                 .get()
                 .build();
 
@@ -37,3 +38,6 @@ public class Api_Call2 extends AsyncTask<Void, Void, Void > {
         return null;
     }
 }
+
+// https://my.nbg.gr/identity/connect/authorize?client_id=6708C63F-8DC9-47BF-B307-26D52EE88B59&response_type=code&scope=sandbox-account-info-api-v2&redirect_uri=https://developer.nbg.gr/oauth2/redoc-callback
+// https://my.nbg.gr/identity/connect/authorize?client_id=6708C63F-8DC9-47BF-B307-26D52EE88B59&response_type=code&scope=sandbox-account-info-api-v2&redirect_uri=https://developer.nbg.gr/oauth2/redoc-callback

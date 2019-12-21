@@ -1,5 +1,7 @@
 package com.uom.androidapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -10,12 +12,13 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class Authorisation extends AsyncTask<Void, Void, Response>{
+
     @Override
     protected Response doInBackground(Void... voids) {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("https://my.nbg.gr/identity/connect/authorize?client_id=198E37FF-338C-452D-A9E4-1F6831286ED1&response_type=code&scope=get-token-api-v1&redirect_uri=")
+                .url("https://my.nbg.gr/identity/connect/authorize?client_id=198E37FF-338C-452D-A9E4-1F6831286ED1&response_type=code&scope=get-token-api-v1&redirect_uri=https://developer.nbg.gr/oauth2/redoc-callback")
                 .get()
                 .build();
 

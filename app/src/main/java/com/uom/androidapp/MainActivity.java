@@ -63,13 +63,20 @@ public class MainActivity extends AppCompatActivity {
 
         final Authorisation authorisation =  new Authorisation();
 
-        Button btn = findViewById(R.id.button);
-        btn.setOnClickListener(new View.OnClickListener() {
+        Button btn = (Button) findViewById(R.id.button);
+     /*   btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Authorisation().execute();
             }
-        });
+        });*/
+     btn.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.rapidlink.piraeusbank.gr/piraeusbank/production/v2.1/oauth/oauth2/authorize?response_type=code&client_id=565fb41c-616b-4c06-92d0-98e6c0f38103&redirect_uri=https://127.0.0.1&scope=sandboxapi+offline_access"));
+             startActivity(browserIntent);
+         }
+     });
 
 //        new AccessToken().execute();
 
@@ -84,6 +91,10 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
+
+
+      /*  Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://my.nbg.gr/identity/connect/authorize?client_id=198E37FF-338C-452D-A9E4-1F6831286ED1&response_type=code&scope=get-token-api-v1&redirect_uri=https://developer.nbg.gr/oauth2/redoc-callback"));
+        startActivity(browserIntent);*/
 
 
 //        /*opens The url provided in a new Browser*/

@@ -70,15 +70,25 @@ public class MainActivity extends AppCompatActivity {
                 new Authorisation().execute();
             }
         });*/
-     btn.setOnClickListener(new View.OnClickListener() {
+ /*    btn.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.rapidlink.piraeusbank.gr/piraeusbank/production/v2.1/oauth/oauth2/authorize?response_type=code&client_id=565fb41c-616b-4c06-92d0-98e6c0f38103&redirect_uri=https://127.0.0.1&scope=sandboxapi+offline_access"));
+             Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                     Uri.parse("https://api.rapidlink.piraeusbank.gr/piraeusbank/production/v2.1/oauth/oauth2/authorize?response_type=code&client_id=565fb41c-616b-4c06-92d0-98e6c0f38103&scope=sandboxapi+offline_access"));
              startActivity(browserIntent);
          }
      });
-
-//        new AccessToken().execute();
+*/
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://api.rapidlink.piraeusbank.gr/piraeusbank/production/v2.1/oauth/oauth2/authorize?" +
+                                "response_type=code&client_id=565fb41c-616b-4c06-92d0-98e6c0f38103&scope=sandboxapi+offline_access"));
+                startActivity(browserIntent);
+            }
+        });
+        //        new AccessToken().execute();
 
 //        new Sandbox().execute();
 //        new API_CALL().execute("");
